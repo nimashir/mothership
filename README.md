@@ -8,7 +8,7 @@ The dataset under study is comprised of 100 planets and 4673 asteroids. The foll
  
  Clearly, our universe is not evenly distributed; there is a higher density of asteroids in upper right, compared to more dispersed density in lower left. In addition, density of asteroids is much higher in close proximity of planets and as you get farther from the planet there is lower density of asteroids.
  
-## methodology:
+## methodology
 
 This problem is a variant of capacitated vehicle routing problem. The capacity of vehicle (20) is relatively small compared to the demand (2000). Therefore, at least 100 rounds of loading and unloading is required. For the purpose of vehicle routing within each loading, I have used OR-tools library. More specifically, I’ve designed my solution to use capacitated vehicle routing with penalty for unvisited demand. In designing the solution algorithm, the following considerations have been made:
 
@@ -27,22 +27,22 @@ Utility = distance_weight * (min_distance/distance) + count_weight * (asteroid_c
 ## Solution
 
 The algorithm has 8 parameters: 
-•	vehicle_max_cap: given as 20
-•	total_demand: given as 2000
-•	min_number_of_asteroids: Given the max capacity of 20, having at least 30 candidate at each routing steps is reasonable
-•	magnifier: is fixed as 1.5. With window length greater than 1000, we would have 30 candidates anyway
-•	window_length: a range of [1500-2000] is suggested. With greater window length, the feasible space will be much larger and as a result the running time will be higher
-•	distance_weight, count_weight: While not required but the sum of weights are suggested to be 1. As the count_weight increases(distance weight decreases), the vehicle would consider even farther planets for unloading
-•	max_range: a range of (50,200) is suggested. With higher value, the impact of asteroid proximity on planet utility will be lower.
+*	vehicle_max_cap: given as 20
+*	total_demand: given as 2000
+*	min_number_of_asteroids: Given the max capacity of 20, having at least 30 candidate at each routing steps is reasonable
+*	magnifier: is fixed as 1.5. With window length greater than 1000, we would have 30 candidates anyway
+*	window_length: a range of [1500-2000] is suggested. With greater window length, the feasible space will be much larger and as a result the running time will be higher
+*	distance_weight, count_weight: While not required but the sum of weights are suggested to be 1. As the count_weight increases(distance weight decreases), the vehicle would consider even farther planets for unloading
+*	max_range: a range of (50,200) is suggested. With higher value, the impact of asteroid proximity on planet utility will be lower.
 
 By conducting some sensitivity analysis, the best routing cost is found with distance weight of 0.5, count weight of 0.5, max range of 100, and window length of 1500. The corresponding cost is 113,596 and the running time is 65 seconds
 
 ## Potential Extension
 
-•	A backward approach: Starting from high density areas and moving toward (0,0) 
-•	Multi-vehicle approach: Running multiple vehicle into the space and matching their solution subsequently.
-•	Applying Mehta-heuristic methods such as genetic algorithm is another alternative. Especially, if coupled with multi-vehicle approach.
-•	Looking for approaches to allow unloading at any steps rather than limiting the unloading to a full capacity vehicle
+*	A backward approach: Starting from high density areas and moving toward (0,0) 
+*	Multi-vehicle approach: Running multiple vehicle into the space and matching their solution subsequently.
+*	Applying Mehta-heuristic methods such as genetic algorithm is another alternative. Especially, if coupled with multi-vehicle approach.
+*	Looking for approaches to allow unloading at any steps rather than limiting the unloading to a full capacity vehicle
 
 
 
