@@ -3,6 +3,7 @@ import math
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 import matplotlib.pyplot as plt
+import datetime
 ROOTFOLDER = r'C:\Users\NS80482\Desktop\Personal\Mothership'
 
 def compute_euclidean_distance_matrix(locations):
@@ -245,9 +246,11 @@ def main():
     count_weight = 0.5
     max_range = 100
     # run the routing algorithm
+    t_start = datetime.datetime.now()
     master_route, traveled_distance = run_truck_routing_model(vehicle_max_cap, total_demand, window_length, min_number_of_asteroids, magnifier,
                                 distance_weight, count_weight, max_range)
-
+    t_end = datetime.datetime.now()
+    print("Done! running time is %s seconds"%((t_end-t_start).total_seconds()))
     # plot the routing
     universe_df = pd.read_csv(ROOTFOLDER + '\\Data\\entities.csv')
     planet_df = universe_df[universe_df['is_planet'] == True]
