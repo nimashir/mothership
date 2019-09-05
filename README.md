@@ -39,7 +39,7 @@ The algorithm has 8 parameters:
 *	distance_weight, count_weight: While not required but the sum of weights are suggested to be 1. As the count_weight increases(distance weight decreases), the vehicle would consider even farther planets for unloading
 *	max_range: a range of (50,200) is suggested. With higher value, the impact of asteroid proximity on planet utility will be lower.
 
-By conducting some sensitivity analysis, the best routing cost is found with distance weight of 0.5, count weight of 0.5, max range of 100, and window length of 1500. The corresponding cost is 113,596 and the running time is 65 seconds
+By conducting some sensitivity analysis, the best routing cost is found with distance weight of 0.5, count weight of 0.5, max range of 100, and window length of 1500. The corresponding cost is 113,596 and the running time is 65 seconds. 
 
  ![Alt text](https://github.com/nimashir/mothership/blob/master/routing_solution.PNG)
  
