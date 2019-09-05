@@ -11,17 +11,18 @@ The dataset under study is comprised of 100 planets and 4673 asteroids. The foll
 ## methodology:
 
 This problem is a variant of capacitated vehicle routing problem. The capacity of vehicle (20) is relatively small compared to the demand (2000). Therefore, at least 100 rounds of loading and unloading is required. For the purpose of vehicle routing within each loading, I have used OR-tools library. More specifically, I’ve designed my solution to use capacitated vehicle routing with penalty for unvisited demand. In designing the solution algorithm, the following considerations have been made:
-•	The solution utilizes only one vehicle. 
-•	The overall routing is constructed sequentially. In every step, the vehicle will be routed to fill its capacity(20 asteroid visits), then it will be directed to the planet with highest utility(will be discussed later)
-•	Since the algorithm works sequentially, the solution space need to be decomposed to speed up the running time. At each step (except the first step), the vehicle starts from a planet. We limit the solution space for routing by applying a spatial filter and crop around the current planet. The idea is that when you are around (0,0), there is no point of having option to travel directly to (10,000,10,000)
-•	At each steps and after filtering the asteroid candidates, all the asteroid would have a demand equal 1. Now if you have 50 asteroids, the vehicle would be able to visit only 20 asteroids, and the remaining 30 asteroids remain unvisited through adding penalty to the objective function.
-•	At the end of each step, all visited asteroids will be dropped permanently from potential asteroids
-•	At the end of each step, the vehicle returns to the planet with highest utility. The utility of planet is defined based on its distance to the location of vehicle at the last stop, and the density of asteroids around the planet.
-•	In order to calculate the utility, the number of asteroids within some range of distance will be updated for each planet.  As a result, at the end of each iteration we have asteroid_count and distance for each planet; min distance and max_asteroid_count across the universe. The utility of each planet will be updated as 
+
+*	The solution utilizes only one vehicle. 
+*	The overall routing is constructed sequentially. In every step, the vehicle will be routed to fill its capacity(20 asteroid visits), then it will be directed to the planet with highest utility(will be discussed later)
+*	Since the algorithm works sequentially, the solution space need to be decomposed to speed up the running time. At each step (except the first step), the vehicle starts from a planet. We limit the solution space for routing by applying a spatial filter and crop around the current planet. The idea is that when you are around (0,0), there is no point of having option to travel directly to (10,000,10,000)
+*	At each steps and after filtering the asteroid candidates, all the asteroid would have a demand equal 1. Now if you have 50 asteroids, the vehicle would be able to visit only 20 asteroids, and the remaining 30 asteroids remain unvisited through adding penalty to the objective function.
+*	At the end of each step, all visited asteroids will be dropped permanently from potential asteroids
+*	At the end of each step, the vehicle returns to the planet with highest utility. The utility of planet is defined based on its distance to the location of vehicle at the last stop, and the density of asteroids around the planet.
+*	In order to calculate the utility, the number of asteroids within some range of distance will be updated for each planet.  As a result, at the end of each iteration we have asteroid_count and distance for each planet; min distance and max_asteroid_count across the universe. The utility of each planet will be updated as 
 Utility = distance_weight * (min_distance/distance) + count_weight * (asteroid_count/max_asteroid_count).
 
-•	Note that at each step the visited asteroids will be deleted permanently, hence, the asteroid proximity will be constantly changing.
-•	At the end of each step, OR-tools is set to return the vehicle to the planet from which the routing has started. We would ignore this return and the corresponding cost in the solution
+*	Note that at each step the visited asteroids will be deleted permanently, hence, the asteroid proximity will be constantly changing.
+*	At the end of each step, OR-tools is set to return the vehicle to the planet from which the routing has started. We would ignore this return and the corresponding cost in the solution
 
 ## Solution
 
