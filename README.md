@@ -42,7 +42,7 @@ By conducting some sensitivity analysis, the best routing cost is found with dis
 *	A backward approach: Starting from high density areas and moving toward (0,0) 
 *	Multi-vehicle approach: Running multiple vehicle into the space and matching their solution subsequently.
 *	Applying Mehta-heuristic methods such as genetic algorithm is another alternative. Especially, if coupled with multi-vehicle approach.
-*	Looking for approaches to allow unloading at any steps rather than limiting the unloading to a full capacity vehicle
+*	Looking for approaches to allow unloading at any stage rather than limiting the unloading to a full capacity vehicle
 
 
 
