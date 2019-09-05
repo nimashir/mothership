@@ -6,7 +6,7 @@ To develop a solution algorithm to mine and sell 2000 asteroids with minimum tra
 Overview of problem landscape
 The dataset under study is comprised of 100 planets and 4673 asteroids. The following graph shows their spatial distribution of planets (red dot) and asteroids (black dot):
  
- ![Alt text](/spatial_distribution.png?raw=true "Title")
+ ![Alt text](spatial_distribution.png?raw=true "Title")
  
  
  
