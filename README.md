@@ -1,6 +1,6 @@
-###Data Science Project Challenge
+### Data Science Project Challenge
 
-#Objective
+# Objective
 
 To develop a solution algorithm to mine and sell 2000 asteroids with minimum traveled distance.
 Overview of problem landscape
@@ -8,7 +8,7 @@ The dataset under study is comprised of 100 planets and 4673 asteroids. The foll
  
  Clearly, our universe is not evenly distributed; there is a higher density of asteroids in upper right, compared to more dispersed density in lower left. In addition, density of asteroids is much higher in close proximity of planets and as you get farther from the planet there is lower density of asteroids.
  
-#methodology:
+# methodology:
 
 This problem is a variant of capacitated vehicle routing problem. The capacity of vehicle (20) is relatively small compared to the demand (2000). Therefore, at least 100 rounds of loading and unloading is required. For the purpose of vehicle routing within each loading, I have used OR-tools library. More specifically, I’ve designed my solution to use capacitated vehicle routing with penalty for unvisited demand. In designing the solution algorithm, the following considerations have been made:
 •	The solution utilizes only one vehicle. 
@@ -23,7 +23,7 @@ Utility = distance_weight * (min_distance/distance) + count_weight * (asteroid_c
 •	Note that at each step the visited asteroids will be deleted permanently, hence, the asteroid proximity will be constantly changing.
 •	At the end of each step, OR-tools is set to return the vehicle to the planet from which the routing has started. We would ignore this return and the corresponding cost in the solution
 
-#Solution
+# Solution
 
 The algorithm has 8 parameters: 
 •	vehicle_max_cap: given as 20
@@ -36,7 +36,7 @@ The algorithm has 8 parameters:
 
 By conducting some sensitivity analysis, the best routing cost is found with distance weight of 0.5, count weight of 0.5, max range of 100, and window length of 1500. The corresponding cost is 113,596 and the running time is 65 seconds
 
-#Potential Extension
+# Potential Extension
 
 •	A backward approach: Starting from high density areas and moving toward (0,0) 
 •	Multi-vehicle approach: Running multiple vehicle into the space and matching their solution subsequently.
