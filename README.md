@@ -41,6 +41,8 @@ The algorithm has 8 parameters:
 
 By conducting some sensitivity analysis, the best routing cost is found with distance weight of 0.5, count weight of 0.5, max range of 100, and window length of 1500. The corresponding cost is 113,596 and the running time is 65 seconds
 
+ ![Alt text](https://github.com/nimashir/mothership/blob/master/routing_solution.PNG)
+ 
 ## Potential Extension
 
 *	A backward approach: Starting from high density areas and moving toward (0,0) 
